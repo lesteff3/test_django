@@ -1,0 +1,9 @@
+asgiref==3.6.0
+backports.zoneinfo==0.2.1
+Django==4.2.1
+Pillow==9.5.0
+postgres==4.0
+psycopg2==2.9.6
+psycopg2-binary==2.9.6
+psycopg2-pool==1.1
+sqlparse==0.4.4
