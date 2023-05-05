@@ -26,6 +26,8 @@ from testsite import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('books.urls')),
+    path('login/', include('login.urls')),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

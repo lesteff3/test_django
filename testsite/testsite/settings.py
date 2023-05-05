@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books.apps.BooksConfig'
+    'books.apps.BooksConfig',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'testsite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'shop_books',
+        'NAME': 'books',
         'USER': 'admin1',
         'PASSWORD': 'nicer2001',
         'HOST': 'localhost',

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from .forms import BooksForm
 
 from .models import *
@@ -11,7 +11,9 @@ def index(request):
 
 
 def stats(request):
+
     return render(request, 'books/stats.html', {'title': "Статистика"})
+
 
 def create(request):
     error = ''
@@ -23,7 +25,6 @@ def create(request):
         else:
             error = 'Форма была не верной'
 
-
     form = BooksForm()
 
     data = {
@@ -31,3 +32,5 @@ def create(request):
         'error': error
     }
     return render(request, 'books/create.html', data)
+
+
