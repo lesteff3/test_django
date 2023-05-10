@@ -7,7 +7,7 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .forms import *
 from .models import *
@@ -40,35 +40,5 @@ def create(request):
         'error': error
     }
     return render(request, 'books/create.html', data)
-
-
-
-
-class RegisterUserForm:
-    pass
-
-
-class RegisterUser(CreateView):
-    form_class = UserCreationForm
-    template_name = 'books/register.html'
-    success_url = reverse_lazy('login')
-
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return reverse_lazy('home')
-
-
-class LoginUser(LoginView):
-    form_class = AuthenticationForm
-    template_name = 'books/login.html'
-
-    def get_success_url(self):
-        return reverse_lazy('home')
-
-def logout_user(request):
-    logout(request)
-    return redirect('login')
-
 
 

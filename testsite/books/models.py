@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Books(models.Model):
@@ -13,3 +14,4 @@ class Books(models.Model):
     class Meta:
         verbose_name = 'Book'
         verbose_name_plural = 'Books'
+#
