@@ -1,0 +1,13 @@
+{% extends 'books/base.html' %}
+
+{% block content %}
+<div class="features">
+    <h1>Авторизация пользователя</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+
+</div>
+{% endblock %}

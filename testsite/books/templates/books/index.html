@@ -4,13 +4,16 @@
 
 
     <div class="features">
-        <h1>{{title}}</h1>
-        {%for p in posts %}
+        <h1>Список книг</h1>
+        {%for p in public %}
             <div class="alert alert-warning">
             <h3>Автор: {{p.author}}</h3>
             <p>Название книги: {{p.title}}</p>
-            <p>Кол-во книг: {{p.count }}</p>
-
+            <p>Остаток в магазине: {{ p.count }}</p>
+            <p>Цена: {{p.price }} $</p>
+              {% if request.user.is_authenticated %}
+                <a href="{% url 'book-detail' p.id %}"><li>Купить</li></a>
+              {% endif %}
         </div>
         {% endfor %}
 

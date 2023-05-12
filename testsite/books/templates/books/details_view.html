@@ -1,0 +1,15 @@
+{% extends 'books/base.html' %}
+{% block content %}
+
+  <div class="features">
+     <h1>Вы успешно купили книгу</h1><br>
+  </div>
+  <div class="alert alert-warning">
+     <li> <h4>Название книги: {{book.title}}</h4><br>
+      <p> Автор: {{ book.author }}</p>
+    <p>Остаток в магазине: {{ book.count }}</p></li>
+
+
+
+  </div>
+{% endblock %}

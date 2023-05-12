@@ -58,7 +58,19 @@ main .features h1{
     width: 75%;
 }
 
+
+
+
+
 main .features li h2{
+
+    margin-top: 50px;
+    font-size: 20px;
+    text-align: center;
+}
+
+main .features li h4{
+
     margin-top: 50px;
     font-size: 20px;
     text-align: center;
