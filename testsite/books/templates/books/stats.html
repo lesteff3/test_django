@@ -4,12 +4,12 @@
 <div class="features">
 <h1>Статистика по магазину</h1><br>
 
-<h4>Всего книг в магазине: {{ count }} </h4><br>
+<h4>Всего книг в магазине: {{ total_books }} </h4><br>
   <br>
-<h4>Книг продано всего:{{ count_stock }} </h4><br>
+<h4>Книг продано всего:{{ total_sold_books }} </h4><br>
   <br>
-  {% for a in author %}
-<h4>Продано книг автором {{ a.title }}:  {{ sell_books }} % </h4><br>
+  {% for a in books %}
+<h4>Продано книг автором {{ a.author }}:  {{ a.get_percent_sell }} % </h4><br>
   {% endfor %}
 
 </div>

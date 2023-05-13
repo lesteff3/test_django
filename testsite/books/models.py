@@ -11,6 +11,12 @@ class Books(models.Model):
     stock = models.PositiveIntegerField(default=0)
 
 
+    def get_percent_sell(self):
+        percent_sell = round((self.stock / self.count) * 100, 2)
+        return percent_sell
+
+
+
     def __str__(self):
         return self.title
 

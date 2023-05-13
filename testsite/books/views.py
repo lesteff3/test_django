@@ -1,4 +1,4 @@
-
+from django.db.models import F
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView
@@ -39,24 +39,21 @@ def index(request):
 
 
 def stats(request):
-    author = Books.objects.all()
-    count_book = Books.objects.values_list('count', flat=True)
-    count = 0
-    for i in count_book:
-        count += i
-    stock_book = Books.objects.values_list('stock', flat=True)
-    count_stock = 0
+    books = Books.objects.filter(count__gt=0).filter(stock__gt=0).annotate(sell_book=F('stock') / F('count'))
+    total_books= 0
+    for book in Books.objects.values_list('count', flat=True):
+        total_books += book
 
-    for c in stock_book:
-        count_stock += c
+    total_sold_books = 0
 
-    sell_books = count_stock / count
+    for c in Books.objects.values_list('stock', flat=True):
+        total_sold_books += c
+
 
     return render(request, 'books/stats.html', {
-        'count': count,
-        'count_stock': count_stock,
-        'author': author,
-        'sell_books': float('{:.3f}'.format(sell_books))
+        'total_books': total_books,
+        'total_sold_books': total_sold_books,
+        'books': books,
     })
 
 
