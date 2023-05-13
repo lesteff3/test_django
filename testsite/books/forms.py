@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 
 from .models import Books
-from django.forms import ModelForm, TextInput, NumberInput
+from django.forms import ModelForm, TextInput, NumberInput, Select
 from django import forms
 
 
@@ -22,7 +22,7 @@ class BooksForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Название книги'
             }),
-            'author': TextInput(attrs={
+            'author': Select(attrs={
                 'class': 'form-control',
                 'placeholder': 'Автор книги'
             }),

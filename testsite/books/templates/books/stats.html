@@ -8,9 +8,9 @@
   <br>
 <h4>Книг продано всего:{{ total_sold_books }} </h4><br>
   <br>
-  {% for a in books %}
-<h4>Продано книг автором {{ a.author }}:  {{ a.get_percent_sell }} % </h4><br>
-  {% endfor %}
+  {% for a in author %}
+<h4>Продано книг автором {{ a }}: {% endfor %} {{ get_all_book_author }} % </h4><br>
+
 
 </div>
 {% endblock %}

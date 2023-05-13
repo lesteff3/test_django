@@ -7,26 +7,6 @@ from .forms import *
 from .models import *
 
 
-# class BookHome(ListView):
-#     model = Books
-#     template_name = 'books/index.html'
-#     extra_context = {'title': 'shop_books'}
-#
-#     def get_queryset(self):
-#         return Books.objects.filter(is_published=True)
-#
-#     def index(self, request):
-#         book = Books.objects.all()
-#         for i in book:
-#             if i.count <= 0:
-#                 i.is_published = False
-#                 i.save()
-#             else:
-#                 i.is_published = True
-#                 i.save()
-#         return render(request, 'books/index.html', {'i':i})
-#
-#
 
 def index(request):
     public = Books.objects.filter(is_published=True)
@@ -39,6 +19,7 @@ def index(request):
 
 
 def stats(request):
+    author = Author.objects.all()
     books = Books.objects.filter(count__gt=0).filter(stock__gt=0).annotate(sell_book=F('stock') / F('count'))
     total_books= 0
     for book in Books.objects.values_list('count', flat=True):
@@ -48,12 +29,17 @@ def stats(request):
 
     for c in Books.objects.values_list('stock', flat=True):
         total_sold_books += c
+    # Author.objects.filter(id=1).values('bookss__count')
+    get_all_book_author = Author.objects.values_list('bookss__count', flat=True)
 
 
     return render(request, 'books/stats.html', {
         'total_books': total_books,
         'total_sold_books': total_sold_books,
         'books': books,
+        'get_all_book_author': get_all_book_author,
+        'author': author,
+
     })
 
 
